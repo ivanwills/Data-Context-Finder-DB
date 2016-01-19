@@ -12,10 +12,7 @@ use version;
 use utf8;
 use base 'DBIx::Class::Schema';
 
-our $VERSION     = version->new('0.0.1');
-our @EXPORT_OK   = qw//;
-our %EXPORT_TAGS = ();
-#our @EXPORT      = qw//;
+our $VERSION = version->new('0.0.1');
 
 __PACKAGE__->load_namespaces;
 

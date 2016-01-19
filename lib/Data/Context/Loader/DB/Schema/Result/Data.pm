@@ -9,25 +9,59 @@ package Data::Context::Loader::DB::Schema::Result::Data;
 use strict;
 use warnings;
 use version;
+use Moose;
+use MooseX::NonMoose;
 use utf8;
-use base 'DBIx::Class::Core';
+extends 'DBIx::Class::Core';
 
-our $VERSION     = version->new('0.0.1');
+our $VERSION = version->new('0.0.1');
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
 __PACKAGE__->table("data");
 
 __PACKAGE__->add_columns(
+    name => {
+        data_type   => "varchar",
+        is_nullable => 0,
+        size        => 1024,
+    },
     json => {
         data_type   => "varchar",
         is_nullable => 1,
     },
+    created => {
+        data_type     => "timestamp with time zone",
+        default_value => \"current_timestamp",
+        is_nullable   => 0,
+        original      => {
+            default_value => \"now()"
+        },
+    },
     modified => {
-        data_type   => "timestamp with time zone",
-        is_nullable => 0,
+        data_type     => "timestamp with time zone",
+        default_value => \"current_timestamp",
+        is_nullable   => 0,
+        original      => {
+            default_value => \"now()"
+        },
     },
 );
+
+__PACKAGE__->set_primary_key("name");
+
+__PACKAGE__->inflate_column (
+    json => {
+        inflate => sub {
+            return JSON::XS->new->utf8->relaxed->shrink->decode($_[0]);
+        },
+        deflate => sub {
+            return JSON::XS->new->utf8->relaxed->shrink->encode($_[0]);
+        },
+    },
+);
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 
@@ -35,7 +69,7 @@ __END__
 
 =head1 NAME
 
-Data::Context::Loader::DB::Schema::Result::Data - <One-line description of module's purpose>
+Data::Context::Loader::DB::Schema::Result::Data - Minimum structure for Data::Context table
 
 =head1 VERSION
 
@@ -60,43 +94,32 @@ May include numerous subsections (i.e., =head2, =head3, etc.).
 
 =head2 TABLE: C<data>
 
-=head2 ACCESSORS
+=head1 ACCESSORS
 
-=head3 location
+=head2 name
 
-  data_type: 'geography'
+  data_type: 'varchar'
   is_nullable: 0
-  size: '58880,16'
+  size: 1024
 
-Event location
+=head2 json
 
-=head3 imsi
-
-  data_type: 'varchar'
+  data_type: 'json'
   is_nullable: 1
-  size: 16
 
-=head3 imei
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 16
-
-=head3 msisdn
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 16
-
-=head3 eventtime
+=head2 created
 
   data_type: 'timestamp with time zone'
+  default_value: current_timestamp
   is_nullable: 0
+  original: {default_value => \"now()"}
 
-=head3 eventtype
+=head2 modified
 
-  data_type: 'integer'
-  is_nullable: 1
+  data_type: 'timestamp with time zone'
+  default_value: current_timestamp
+  is_nullable: 0
+  original: {default_value => \"now()"}
 
 =head1 SUBROUTINES/METHODS
 
@@ -121,8 +144,13 @@ Return: Data::Context::Loader::DB::Schema::Result::Data -
 
 Description:
 
-=cut
+=head1 PRIMARY KEY
 
+=over 4
+
+=item * L</name>
+
+=back
 
 =head1 DIAGNOSTICS
 
