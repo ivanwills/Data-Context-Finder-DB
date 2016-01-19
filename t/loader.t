@@ -6,7 +6,7 @@ use Test::More;
 use Test::Warnings;
 use Data::Context;
 use Data::Context::Finder::DB;
-use Data::Context::Loader::DB::Schema;
+use Data::Context::Finder::DB::Schema;
 
 
 eval {
@@ -20,7 +20,7 @@ done_testing;
 sub test_getting {
     my $dc = Data::Context->new(
         finder => Data::Context::Finder::DB->new(
-            schema => Data::Context::Loader::DB::Schema->connect('dbi:SQLite:dbname=t/test.sqlite'),
+            schema => Data::Context::Finder::DB::Schema->connect('dbi:SQLite:dbname=t/test.sqlite'),
         ),
         fallback => 1,
     );
@@ -58,7 +58,7 @@ sub test_getting {
 sub test_getting_no_fallback {
     my $dc = Data::Context->new(
         finder => Data::Context::Finder::DB->new(
-            schema => Data::Context::Loader::DB::Schema->connect('dbi:SQLite:dbname=t/test.sqlite'),
+            schema => Data::Context::Finder::DB::Schema->connect('dbi:SQLite:dbname=t/test.sqlite'),
         ),
         fallback => 0,
     );

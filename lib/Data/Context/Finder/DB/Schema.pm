@@ -1,4 +1,4 @@
-package Data::Context::Loader::DB::Schema;
+package Data::Context::Finder::DB::Schema;
 
 # Created on: 2016-01-18 13:44:52
 # Create by:  Ivan Wills
@@ -24,16 +24,16 @@ __END__
 
 =head1 NAME
 
-Data::Context::Loader::DB::Schema - <One-line description of module's purpose>
+Data::Context::Finder::DB::Schema - <One-line description of module's purpose>
 
 =head1 VERSION
 
-This documentation refers to Data::Context::Loader::DB::Schema version 0.0.1
+This documentation refers to Data::Context::Finder::DB::Schema version 0.0.1
 
 
 =head1 SYNOPSIS
 
-   use Data::Context::Loader::DB::Schema;
+   use Data::Context::Finder::DB::Schema;
 
    # Brief but working code example(s) here showing the most common usage(s)
    # This section will be as far as many users bother reading, so make it as
@@ -66,7 +66,7 @@ context to help them understand the methods that are subsequently described.
 
 Param: C<$search> - type (detail) - description
 
-Return: Data::Context::Loader::DB::Schema -
+Return: Data::Context::Finder::DB::Schema -
 
 Description:
 

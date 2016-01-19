@@ -1,4 +1,4 @@
-package Data::Context::Loader::DB::Schema::Result::Data;
+package Data::Context::Finder::DB::Schema::Result::Data;
 
 # Created on: 2016-01-18 13:46:01
 # Create by:  Ivan Wills
@@ -69,16 +69,16 @@ __END__
 
 =head1 NAME
 
-Data::Context::Loader::DB::Schema::Result::Data - Minimum structure for Data::Context table
+Data::Context::Finder::DB::Schema::Result::Data - Minimum structure for Data::Context table
 
 =head1 VERSION
 
-This documentation refers to Data::Context::Loader::DB::Schema::Result::Data version 0.0.1
+This documentation refers to Data::Context::Finder::DB::Schema::Result::Data version 0.0.1
 
 
 =head1 SYNOPSIS
 
-   use Data::Context::Loader::DB::Schema::Result::Data;
+   use Data::Context::Finder::DB::Schema::Result::Data;
 
    # Brief but working code example(s) here showing the most common usage(s)
    # This section will be as far as many users bother reading, so make it as
@@ -140,7 +140,7 @@ context to help them understand the methods that are subsequently described.
 
 Param: C<$search> - type (detail) - description
 
-Return: Data::Context::Loader::DB::Schema::Result::Data -
+Return: Data::Context::Finder::DB::Schema::Result::Data -
 
 Description:
 
