@@ -19,22 +19,8 @@ our $VERSION = version->new('0.0.1');
 
 extends 'Data::Context::Loader';
 
-
 sub changed {
-    my ($self) = @_;
-
-    # check if we already have the raw data and if so that it is current
-    return -s $self->file != $self->stats->{size};
-}
-
-sub loader { confess "Not implemented!" }
-
-sub load {
-    my ($self) = @_;
-
-    my $raw = JSON->new->utf8->shrink->decode();
-
-    return $raw;
+    return 0;
 }
 
 __PACKAGE__->meta->make_immutable;
