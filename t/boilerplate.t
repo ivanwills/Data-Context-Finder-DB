@@ -58,5 +58,8 @@ subtest 'Changes' => sub {
     );
 };
 
+module_boilerplate_ok('lib/Data/Context/Finder/DB.pm');
 module_boilerplate_ok('lib/Data/Context/Loader/DB.pm');
+module_boilerplate_ok('lib/Data/Context/Finder/DB/Schema.pm');
+module_boilerplate_ok('lib/Data/Context/Finder/DB/Schema/Result/Data.pm');
 done_testing();
