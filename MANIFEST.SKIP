@@ -93,3 +93,4 @@ errors.err
 .travis.yml
 .editorconfig
 .vtide.yml
+.vtide/start.log
