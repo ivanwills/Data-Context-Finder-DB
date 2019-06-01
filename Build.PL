@@ -9,19 +9,26 @@ my $builder = Module::Build->new(
     dist_version_from => 'lib/Data/Context/Loader/DB.pm',
     requires          => {
         'perl'                  => '5.008',
-        'Data::Context::Loader' => '0.1.10',
-        'Data::Context::Util'   => '0.1.10',
+        'DBIx::Class::Core'     => 0,
+        'DBIx::Class::Schema'   => 0,
+        'Data::Context'         => '0.3',
+        'Data::Context::Finder' => '0.3',
+        'Data::Context::Loader' => '0.3',
+        'Data::Context::Util'   => '0.3',
         'JSON::XS'              => 0,
         'Moose'                 => 0,
+        'MooseX::NonMoose'      => '0.26',
         'namespace::autoclean'  => 0,
         'version'               => 0,
+    },
+    configure_requires => {
+        'Module::Build' => 0.38,
     },
     build_requires => {
         'Test::More'     => '0.88',
         'Test::Warnings' => '0.026',
     },
     add_to_cleanup     => [ 'Data-Context-Loader-DB-*' ],
-    create_makefile_pl => 'traditional',
     create_license     => 1,
     meta_merge => {
         resources => {
