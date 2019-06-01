@@ -86,11 +86,6 @@ This documentation refers to Data::Context::Finder::DB::Schema::Result::Data ver
 
 =head1 DESCRIPTION
 
-A full description of the module and its features.
-
-May include numerous subsections (i.e., =head2, =head3, etc.).
-
-
 =head2 TABLE: C<data>
 
 =head1 ACCESSORS
